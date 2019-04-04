@@ -5,11 +5,11 @@
 Write a class which will validate if a vehicle can carry any of the warranty coverages in the $coverage array
 
 
-#How To Execute Tests
+# How To Execute Tests
 
 ### Start API
 
-NOTE: The API must be started prior to running the main program!!!
+**NOTE: The API must be started prior to running the main program!!!**
 
 Start the API prior to running the main application.  The API iinvoke the server on the localhost at port 8888.  The program is called api_get_coverage.php.  It uses PHP mini webserver to host the API.  The API can be launched by running this command... 
 
