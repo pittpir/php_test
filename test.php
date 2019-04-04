@@ -339,7 +339,6 @@ if ($required_opts != 7) {
 //Convert the $coverage array to a json file, simulate an API call in a private method to pull the json file to create the coverage array.
 //the following below will create the JSCON file if it does not exist or file size is 0.
 if (!file_exists($filename) || !(filesize($filename) > 0)) {
-    echo "The file $filename does not exist -- Creating it now\n";
     $coverage_to_json = json_encode($coverage);
     file_put_contents($filename, $coverage_to_json);
 }
