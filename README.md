@@ -52,24 +52,24 @@ php test.php --make=Volkswagen --model_year=2012 --issue_mileage=90000
 #### Output 1
 
 ```
-Volkswagen  2012  90000  USED  "3 Months/3,000 Miles"  suffix1:06  suffix2:A  RESULTS: SUCCESS   
-Volkswagen  2012  90000  USED  "6 Months/12,000 Miles"  suffix1:06  suffix2:A  RESULTS: SUCCESS   
-Volkswagen  2012  90000  USED  "12 Months/24,000 Miles"  suffix1:06  suffix2:A  RESULTS: SUCCESS   
-Volkswagen  2012  90000  USED  "24 Months/30,000 Miles"  suffix1:06  suffix2:A  RESULTS: SUCCESS   
-Volkswagen  2012  90000  USED  "24 Months/36,000 Miles"  suffix1:06  suffix2:A  RESULTS: SUCCESS   
-Volkswagen  2012  90000  USED  "36 Months/36,000 Miles"  suffix1:06  suffix2:A  RESULTS: SUCCESS   
-Volkswagen  2012  90000  USED  "36 Months/45,000 Miles"  suffix1:06  suffix2:A  RESULTS: SUCCESS   
-Volkswagen  2012  90000  USED  "36 Months/50,000 Miles"  suffix1:06  suffix2:A  RESULTS: SUCCESS   
-Volkswagen  2012  90000  USED  "48 Months/50,000 Miles"  suffix1:06  suffix2:A  RESULTS: SUCCESS   
-Volkswagen  2012  90000  USED  "48 Months/60,000 Miles"  suffix1:06  suffix2:A  RESULTS: SUCCESS   
-Volkswagen  2012  90000  USED  "60 Months/72,000 Miles"  suffix1:06  suffix2:A  RESULTS: FAILURE   Mileage greater than 153000 before contract ends   
-Volkswagen  2012  90000  USED  "60 Months/75,000 Miles"  suffix1:06  suffix2:A  RESULTS: FAILURE   Mileage greater than 153000 before contract ends   
-Volkswagen  2012  90000  USED  "72 Months/100,000 Miles"  suffix1:06  suffix2:A  RESULTS: FAILURE   Mileage greater than 153000 before contract ends   
-Volkswagen  2012  90000  USED  "84 Months/84,000 Miles"  suffix1:06  suffix2:A  RESULTS: FAILURE   Mileage greater than 153000 before contract ends   Term greater than 147 months   
-Volkswagen  2012  90000  USED  "84 Months/96,000 Miles"  suffix1:06  suffix2:A  RESULTS: FAILURE   Mileage greater than 153000 before contract ends   Term greater than 147 months   
-Volkswagen  2012  90000  USED  "100 Months/100,000 Miles"  suffix1:06  suffix2:A  RESULTS: FAILURE   Mileage greater than 153000 before contract ends   Term greater than 147 months   
-Volkswagen  2012  90000  USED  "100 Months/120,000 Miles"  suffix1:06  suffix2:A  RESULTS: FAILURE   Mileage greater than 153000 before contract ends   Term greater than 147 months   
-Volkswagen  2012  90000  USED  "120 Months/120,000 Miles"  suffix1:06  suffix2:A  RESULTS: FAILURE   Mileage greater than 153000 before contract ends   Term greater than 147 months 
+Volkswagen  2012  90000  USED      "3 Months/3,000 Miles"       suffix1:06  suffix2:G  RESULTS: SUCCESS   
+Volkswagen  2012  90000  USED      "6 Months/12,000 Miles"      suffix1:06  suffix2:G  RESULTS: SUCCESS   
+Volkswagen  2012  90000  USED      "12 Months/24,000 Miles"     suffix1:06  suffix2:G  RESULTS: SUCCESS   
+Volkswagen  2012  90000  USED      "24 Months/30,000 Miles"     suffix1:06  suffix2:G  RESULTS: SUCCESS   
+Volkswagen  2012  90000  USED      "24 Months/36,000 Miles"     suffix1:06  suffix2:G  RESULTS: SUCCESS   
+Volkswagen  2012  90000  USED      "36 Months/36,000 Miles"     suffix1:06  suffix2:G  RESULTS: SUCCESS   
+Volkswagen  2012  90000  USED      "36 Months/45,000 Miles"     suffix1:06  suffix2:G  RESULTS: SUCCESS   
+Volkswagen  2012  90000  USED      "36 Months/50,000 Miles"     suffix1:06  suffix2:G  RESULTS: SUCCESS   
+Volkswagen  2012  90000  USED      "48 Months/50,000 Miles"     suffix1:06  suffix2:G  RESULTS: SUCCESS   
+Volkswagen  2012  90000  USED      "48 Months/60,000 Miles"     suffix1:06  suffix2:G  RESULTS: SUCCESS   
+Volkswagen  2012  90000  USED      "60 Months/72,000 Miles"     suffix1:06  suffix2:G  RESULTS: FAILURE   Mileage greater than 153000 before contract ends   
+Volkswagen  2012  90000  USED      "60 Months/75,000 Miles"     suffix1:06  suffix2:G  RESULTS: FAILURE   Mileage greater than 153000 before contract ends   
+Volkswagen  2012  90000  USED      "72 Months/100,000 Miles"    suffix1:06  suffix2:G  RESULTS: FAILURE   Mileage greater than 153000 before contract ends   
+Volkswagen  2012  90000  USED      "84 Months/84,000 Miles"     suffix1:06  suffix2:G  RESULTS: FAILURE   Mileage greater than 153000 before contract ends   Term greater than 147 months   
+Volkswagen  2012  90000  USED      "84 Months/96,000 Miles"     suffix1:06  suffix2:G  RESULTS: FAILURE   Mileage greater than 153000 before contract ends   Term greater than 147 months   
+Volkswagen  2012  90000  USED      "100 Months/100,000 Miles"   suffix1:06  suffix2:G  RESULTS: FAILURE   Mileage greater than 153000 before contract ends   Term greater than 147 months   
+Volkswagen  2012  90000  USED      "100 Months/120,000 Miles"   suffix1:06  suffix2:G  RESULTS: FAILURE   Mileage greater than 153000 before contract ends   Term greater than 147 months   
+Volkswagen  2012  90000  USED      "120 Months/120,000 Miles"   suffix1:06  suffix2:G  RESULTS: FAILURE   Mileage greater than 153000 before contract ends   Term greater than 147 months
 ```
 
 #### Input 2
@@ -92,24 +92,24 @@ php test.php --make=BMW --model_year=2018 --issue_mileage=1000
 #### Output 3
 
 ```
-BMW  2018  1000  NEW  "3 Months/3,000 Miles"  suffix1:00  suffix2:A  RESULTS: FAILURE   Miles expires before base warranty   Term expires before base warranty   
-BMW  2018  1000  NEW  "6 Months/12,000 Miles"  suffix1:00  suffix2:A  RESULTS: FAILURE   Miles expires before base warranty   Term expires before base warranty   
-BMW  2018  1000  NEW  "12 Months/24,000 Miles"  suffix1:00  suffix2:A  RESULTS: FAILURE   Miles expires before base warranty   Term expires before base warranty   
-BMW  2018  1000  NEW  "24 Months/30,000 Miles"  suffix1:00  suffix2:A  RESULTS: FAILURE   Miles expires before base warranty   Term expires before base warranty   
-BMW  2018  1000  NEW  "24 Months/36,000 Miles"  suffix1:00  suffix2:A  RESULTS: FAILURE   Miles expires before base warranty   Term expires before base warranty   
-BMW  2018  1000  NEW  "36 Months/36,000 Miles"  suffix1:00  suffix2:A  RESULTS: FAILURE   Miles expires before base warranty   
-BMW  2018  1000  NEW  "36 Months/45,000 Miles"  suffix1:00  suffix2:A  RESULTS: FAILURE   Miles expires before base warranty   
-BMW  2018  1000  NEW  "36 Months/50,000 Miles"  suffix1:00  suffix2:A  RESULTS: SUCCESS   
-BMW  2018  1000  NEW  "48 Months/50,000 Miles"  suffix1:00  suffix2:A  RESULTS: SUCCESS   
-BMW  2018  1000  NEW  "48 Months/60,000 Miles"  suffix1:00  suffix2:A  RESULTS: SUCCESS   
-BMW  2018  1000  NEW  "60 Months/72,000 Miles"  suffix1:00  suffix2:A  RESULTS: SUCCESS   
-BMW  2018  1000  NEW  "60 Months/75,000 Miles"  suffix1:00  suffix2:A  RESULTS: SUCCESS   
-BMW  2018  1000  NEW  "72 Months/100,000 Miles"  suffix1:00  suffix2:A  RESULTS: SUCCESS   
-BMW  2018  1000  NEW  "84 Months/84,000 Miles"  suffix1:00  suffix2:A  RESULTS: SUCCESS   
-BMW  2018  1000  NEW  "84 Months/96,000 Miles"  suffix1:00  suffix2:A  RESULTS: SUCCESS   
-BMW  2018  1000  NEW  "100 Months/100,000 Miles"  suffix1:00  suffix2:A  RESULTS: SUCCESS   
-BMW  2018  1000  NEW  "100 Months/120,000 Miles"  suffix1:00  suffix2:A  RESULTS: SUCCESS   
-BMW  2018  1000  NEW  "120 Months/120,000 Miles"  suffix1:00  suffix2:A  RESULTS: SUCCESS
+BMW  2018  1000  NEW      "3 Months/3,000 Miles"        suffix1:00  suffix2:A  RESULTS: FAILURE   Miles expires before base warranty   Term expires before base warranty   
+BMW  2018  1000  NEW      "6 Months/12,000 Miles"       suffix1:00  suffix2:A  RESULTS: FAILURE   Miles expires before base warranty   Term expires before base warranty   
+BMW  2018  1000  NEW      "12 Months/24,000 Miles"      suffix1:00  suffix2:A  RESULTS: FAILURE   Miles expires before base warranty   Term expires before base warranty   
+BMW  2018  1000  NEW      "24 Months/30,000 Miles"      suffix1:00  suffix2:A  RESULTS: FAILURE   Miles expires before base warranty   Term expires before base warranty   
+BMW  2018  1000  NEW      "24 Months/36,000 Miles"      suffix1:00  suffix2:A  RESULTS: FAILURE   Miles expires before base warranty   Term expires before base warranty   
+BMW  2018  1000  NEW      "36 Months/36,000 Miles"      suffix1:00  suffix2:A  RESULTS: FAILURE   Miles expires before base warranty   
+BMW  2018  1000  NEW      "36 Months/45,000 Miles"      suffix1:00  suffix2:A  RESULTS: FAILURE   Miles expires before base warranty   
+BMW  2018  1000  NEW      "36 Months/50,000 Miles"      suffix1:00  suffix2:A  RESULTS: SUCCESS   
+BMW  2018  1000  NEW      "48 Months/50,000 Miles"      suffix1:00  suffix2:A  RESULTS: SUCCESS   
+BMW  2018  1000  NEW      "48 Months/60,000 Miles"      suffix1:00  suffix2:A  RESULTS: SUCCESS   
+BMW  2018  1000  NEW      "60 Months/72,000 Miles"      suffix1:00  suffix2:A  RESULTS: SUCCESS   
+BMW  2018  1000  NEW      "60 Months/75,000 Miles"      suffix1:00  suffix2:A  RESULTS: SUCCESS   
+BMW  2018  1000  NEW      "72 Months/100,000 Miles"     suffix1:00  suffix2:A  RESULTS: SUCCESS   
+BMW  2018  1000  NEW      "84 Months/84,000 Miles"      suffix1:00  suffix2:A  RESULTS: SUCCESS   
+BMW  2018  1000  NEW      "84 Months/96,000 Miles"      suffix1:00  suffix2:A  RESULTS: SUCCESS   
+BMW  2018  1000  NEW      "100 Months/100,000 Miles"    suffix1:00  suffix2:A  RESULTS: SUCCESS   
+BMW  2018  1000  NEW      "100 Months/120,000 Miles"    suffix1:00  suffix2:A  RESULTS: SUCCESS   
+BMW  2018  1000  NEW      "120 Months/120,000 Miles"    suffix1:00  suffix2:A  RESULTS: SUCCESS 
 ```
 
 #### Input 4
@@ -121,24 +121,24 @@ php test.php --make=BMW --model_year=2010 --issue_mileage=45000
 ### Output 4
 
 ```
-BMW  2010  45000  USED  "3 Months/3,000 Miles"  suffix1:08  suffix2:A  RESULTS: SUCCESS   
-BMW  2010  45000  USED  "6 Months/12,000 Miles"  suffix1:08  suffix2:A  RESULTS: SUCCESS   
-BMW  2010  45000  USED  "12 Months/24,000 Miles"  suffix1:08  suffix2:A  RESULTS: SUCCESS   
-BMW  2010  45000  USED  "24 Months/30,000 Miles"  suffix1:08  suffix2:A  RESULTS: SUCCESS   
-BMW  2010  45000  USED  "24 Months/36,000 Miles"  suffix1:08  suffix2:A  RESULTS: SUCCESS   
-BMW  2010  45000  USED  "36 Months/36,000 Miles"  suffix1:08  suffix2:A  RESULTS: SUCCESS   
-BMW  2010  45000  USED  "36 Months/45,000 Miles"  suffix1:08  suffix2:A  RESULTS: SUCCESS   
-BMW  2010  45000  USED  "36 Months/50,000 Miles"  suffix1:08  suffix2:A  RESULTS: SUCCESS   
-BMW  2010  45000  USED  "48 Months/50,000 Miles"  suffix1:08  suffix2:A  RESULTS: SUCCESS   
-BMW  2010  45000  USED  "48 Months/60,000 Miles"  suffix1:08  suffix2:A  RESULTS: SUCCESS   
-BMW  2010  45000  USED  "60 Months/72,000 Miles"  suffix1:08  suffix2:A  RESULTS: FAILURE   Term greater than 147 months   
-BMW  2010  45000  USED  "60 Months/75,000 Miles"  suffix1:08  suffix2:A  RESULTS: FAILURE   Term greater than 147 months   
-BMW  2010  45000  USED  "72 Months/100,000 Miles"  suffix1:08  suffix2:A  RESULTS: FAILURE   Term greater than 147 months   
-BMW  2010  45000  USED  "84 Months/84,000 Miles"  suffix1:08  suffix2:A  RESULTS: FAILURE   Term greater than 147 months   
-BMW  2010  45000  USED  "84 Months/96,000 Miles"  suffix1:08  suffix2:A  RESULTS: FAILURE   Term greater than 147 months   
-BMW  2010  45000  USED  "100 Months/100,000 Miles"  suffix1:08  suffix2:A  RESULTS: FAILURE   Term greater than 147 months   
-BMW  2010  45000  USED  "100 Months/120,000 Miles"  suffix1:08  suffix2:A  RESULTS: FAILURE   Mileage greater than 153000 before contract ends   Term greater than 147 months   
-BMW  2010  45000  USED  "120 Months/120,000 Miles"  suffix1:08  suffix2:A  RESULTS: FAILURE   Mileage greater than 153000 before contract ends   Term greater than 147 months
+BMW  2010  45000  USED      "3 Months/3,000 Miles"      suffix1:08  suffix2:C  RESULTS: SUCCESS   
+BMW  2010  45000  USED      "6 Months/12,000 Miles"     suffix1:08  suffix2:C  RESULTS: SUCCESS   
+BMW  2010  45000  USED      "12 Months/24,000 Miles"    suffix1:08  suffix2:C  RESULTS: SUCCESS   
+BMW  2010  45000  USED      "24 Months/30,000 Miles"    suffix1:08  suffix2:C  RESULTS: SUCCESS   
+BMW  2010  45000  USED      "24 Months/36,000 Miles"    suffix1:08  suffix2:C  RESULTS: SUCCESS   
+BMW  2010  45000  USED      "36 Months/36,000 Miles"    suffix1:08  suffix2:C  RESULTS: SUCCESS   
+BMW  2010  45000  USED      "36 Months/45,000 Miles"    suffix1:08  suffix2:C  RESULTS: SUCCESS   
+BMW  2010  45000  USED      "36 Months/50,000 Miles"    suffix1:08  suffix2:C  RESULTS: SUCCESS   
+BMW  2010  45000  USED      "48 Months/50,000 Miles"    suffix1:08  suffix2:C  RESULTS: SUCCESS   
+BMW  2010  45000  USED      "48 Months/60,000 Miles"    suffix1:08  suffix2:C  RESULTS: SUCCESS   
+BMW  2010  45000  USED      "60 Months/72,000 Miles"    suffix1:08  suffix2:C  RESULTS: FAILURE   Term greater than 147 months   
+BMW  2010  45000  USED      "60 Months/75,000 Miles"    suffix1:08  suffix2:C  RESULTS: FAILURE   Term greater than 147 months   
+BMW  2010  45000  USED      "72 Months/100,000 Miles"   suffix1:08  suffix2:C  RESULTS: FAILURE   Term greater than 147 months   
+BMW  2010  45000  USED      "84 Months/84,000 Miles"    suffix1:08  suffix2:C  RESULTS: FAILURE   Term greater than 147 months   
+BMW  2010  45000  USED      "84 Months/96,000 Miles"    suffix1:08  suffix2:C  RESULTS: FAILURE   Term greater than 147 months   
+BMW  2010  45000  USED      "100 Months/100,000 Miles"  suffix1:08  suffix2:C  RESULTS: FAILURE   Term greater than 147 months   
+BMW  2010  45000  USED      "100 Months/120,000 Miles"  suffix1:08  suffix2:C  RESULTS: FAILURE   Mileage greater than 153000 before contract ends   Term greater than 147 months   
+BMW  2010  45000  USED      "120 Months/120,000 Miles"  suffix1:08  suffix2:C  RESULTS: FAILURE   Mileage greater than 153000 before contract ends   Term greater than 147 months 
 ```
 
 #Unit Testing
