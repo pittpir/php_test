@@ -151,11 +151,10 @@ class Validate
         $this->retArray = array();
     }
 
-
     //compile the results of the contract
     public function booksOfContract(array $arr, array $base_warranty, array $years, array $issue_mileage, array $classes) : array {
         
-        //issue mileage above what any contract would cover.  Return a -1 to indicate no contracts available.
+        //issue mileage above what any contract would cover.  Return an empty array to indicate no contracts available.
         if ( ($arr['issue mileage'] + 3000) > 153000)
         {
             return $this->retArray;
@@ -168,7 +167,7 @@ class Validate
             }
         }
 
-        //the age of the car is too old for any contract. Return a -1 to indicate no contracts available. 
+        //the age of the car is too old for any contract. Return an empty array to indicate no contracts available. 
         if ( (($this->suffix1*12)+3) >= 147) {
             return $this->retArray;
         }
@@ -189,26 +188,26 @@ class Validate
                     array_push($this->failure, "Miles expires before base warranty");
                 }
 
+                //check if mileage exceeds 153000
                 if ( ($warranty_mileage + $arr['issue mileage']) >= 153000) {
-                    //return -1;
                     array_push($this->failure, "Mileage greater than 153000 before contract ends");
                 }
 
-                
-
+                //check if term expires before the base warranty
                 if  ( ($warranty_term + ($this->suffix1*12) < $base_warranty[$i]['term'] ) && ($this->new_or_used == "NEW"))  {
                    array_push($this->failure, "Term expires before base warranty");
                 }
 
+                //check if the term is going to exceed 147 months (age of Car).
                 if  ( ($warranty_term + ($this->suffix1*12)) >= 147) {
-                   //return -1;
                    array_push($this->failure, "Term greater than 147 months");
                 }
             }
         }
 
+        //find suffix 2 code value  
         for ($i=0; $i<sizeof($issue_mileage); $i++) {        
-            if ( ($arr['issue mileage'] > $issue_mileage[$i]['min']) && ($arr['model year'] < $issue_mileage[$i]['max']) ) {
+            if ( ($arr['issue mileage'] > $issue_mileage[$i]['min']) && ($arr['issue mileage'] < $issue_mileage[$i]['max']) ) {
                 $this->suffix2 = $issue_mileage[$i]['suffix2'];
                 break;
             }
@@ -223,9 +222,10 @@ class Validate
         return $this->retArray;
     }  //end of booksOfContract
 
+    //this will print out the failure nice and pretty
     public function printPrettyFailArray() {
         for ($i=0; $i<sizeof($this->failure); $i++) {
-            echo $this->failure[$i] . "   ";
+            echo "\033[31m" . $this->failure[$i] . "\033[0m   ";
         }
     }
 
@@ -252,9 +252,19 @@ class Validate
 
         $this->context = stream_context_create($this->opts);
         $this->url = 'http://localhost:8888' . getcwd() . 'api_get_coverage.php';
-        $this->result = file_get_contents($this->url, false, $this->context);
+        try {
+            //the @ symbol will supress the warning in case the API is not running.  
+            $this->result = @file_get_contents($this->url, false, $this->context);
+            if ($this->result == null) {
+                throw new Exception();
+            }
+            
+        } catch (Exception $e) {
+            die("DB with coverage not found.  Make sure the API is actively running. \n");
+        }
         $this->coverage1 = json_decode($this->result, true);
         return $this->coverage1;
+        
     }
 }  //end of class
 
@@ -351,7 +361,7 @@ $validateCar = new Validate();
 //php -S localhost:8888 api_get_coverage.php
 $coverage_array = $validateCar->GetJSONResults($filename);  
 
-
+echo "\n\n";
 //run thru the list of coverages to determine if they fit.
 for ($i=0; $i<sizeof($coverage_array); $i++) {
     $array1['testing coverage'] = $coverage_array[$i]['name'];
@@ -364,28 +374,21 @@ for ($i=0; $i<sizeof($coverage_array); $i++) {
         break;
     }
 
-
-
-
-
-
         echo $array1['make'] . "  " . $array1['model year'] . "  " . $array1['issue mileage'] . "  ";
-        echo $ret[0] . "  "; 
-        echo "\"". $array1['testing coverage']. "\"" . "  ";
+        echo $ret[0] . "      "; 
+        echo "\"". $array1['testing coverage']. "\"" . "\t";
         echo "suffix1:";
         printf("%02d", $ret[1]);
         echo "  ";
         echo "suffix2:" . $ret[2] . "  ";
         echo "RESULTS: ";
-        echo ($ret[3] == 0 ? "SUCCESS" : "FAILURE") . "   ";
+        echo ($ret[3] == 0 ? "\033[32mSUCCESS\033[0m" : "\033[31mFAILURE\033[0m") . "   ";
         $ret[3] == 0 ? "" : $validateCar->printPrettyFailArray();
         echo "\n";
 
-$validateCar->clear();
-
-
-
+    $validateCar->clear();
 }
 
+echo "\n\n";
 //end of file
 ?>
