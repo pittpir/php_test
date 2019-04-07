@@ -143,5 +143,10 @@ BMW  2010  45000  USED      "120 Months/120,000 Miles"  suffix1:08  suffix2:C  R
 
 #Unit Testing
 
-TBD
+I wrote my own php Unit Testing program (meaing I did not use the phpunit library).  This program will call the main test.php with the given arguements based off testing the various arrays such as issue_miles, years, and base_warranty.  The idea is to check the boundaries of the properties of the array (aka object) such as min-1, min, min+1.  To run the program do the following...
 
+```
+php test_app.php
+```
+
+Currently, right now it is just going to print the results to the screen for a visual check.  I will add in the actual checking soon.  
