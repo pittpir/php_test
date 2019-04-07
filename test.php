@@ -327,7 +327,7 @@ foreach ($args as $option => $value) {
                 echo "The issue_milage is not a number.\n";
                 exit;
             }
-            if ( ($value > 153000) || ($value < 0) ) {
+            if ( ($value >= 150000) || ($value < 0) ) {
                 echo "No contracts are available for the mileage entered.\n";
                 exit;
             } else {
@@ -379,7 +379,7 @@ for ($i=0; $i<sizeof($coverage_array); $i++) {
 
         echo $array1['make'] . "\t" . $array1['model year'] . "\t" . $array1['issue mileage'] . "\t";
         echo $ret[0] . "      \t"; 
-        echo "\"". $array1['testing coverage']. "\"" . "\t";
+        echo "\"". $array1['testing coverage']. "\"" . "  \t";
         echo "suffix1:";
         printf("%02d", $ret[1]);
         echo "  ";
