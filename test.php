@@ -327,7 +327,7 @@ foreach ($args as $option => $value) {
                 echo "The issue_milage is not a number.\n";
                 exit;
             }
-            if ( ($value >= 150000) || ($value < 0) ) {
+            if ( ($value > 150000) || ($value < 0) ) {
                 echo "No contracts are available for the mileage entered.\n";
                 exit;
             } else {

@@ -71,26 +71,26 @@ $coverage = array(
 );
 //php test.php --make=BMW --model_year=2010 --issue_mileage=45000
 
-function CheckSuffix1Min($issue_mileage) : void {
+function CheckSuffix($issue_mileage, $str) : void {
     for ($i=0; $i<sizeof($issue_mileage); $i++) {        
-        exec("php test.php --make=BMW --model_year=2018 --issue_mileage=" . $issue_mileage[$i]['min'], $output,$return);
+        exec("php test.php --make=BMW --model_year=2018 --issue_mileage=" . $issue_mileage[$i][$str], $output,$return);
+        
+        $compare = preg_match('/suffix2\:(\w)/',$output[2],$matches);
+        if ($matches[1] == $issue_mileage[$i]['suffix2']) {
+            echo "\033[32mValidation Passed\033[0m    ";
+        } else {
+            echo "\033[31mValidation Failed\033[0m    ";
+        }
         echo $output[2] . "\n";
         $output = array();
     }
 }
 
-function CheckSuffix1Max($issue_mileage) : void {
-    for ($i=0; $i<sizeof($issue_mileage); $i++) {        
-        exec("php test.php --make=BMW --model_year=2018 --issue_mileage=" . $issue_mileage[$i]['max'], $output,$return);
-        echo $output[2] . "\n";
-        $output = array();
-    }
 
-}
-echo "---------------------------Checking Min Suffix1---------------------------\n";
-CheckSuffix1Min($issue_mileage);
-echo "\n---------------------------Checking Max Suffix1---------------------------\n";
-CheckSuffix1Max($issue_mileage);
+echo "---------------------------Checking Min Suffix2---------------------------\n";
+CheckSuffix($issue_mileage,'min');
+echo "\n---------------------------Checking Max Suffix2---------------------------\n";
+CheckSuffix($issue_mileage,'max');
 
 
 //exec("php test.php --make=BMW --model_year=2010 --issue_mileage=45000", $output,$return);
