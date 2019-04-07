@@ -179,8 +179,7 @@ class Validate
             
             //check for new or used
             if ($base_warranty[$i]['make'] == $arr['make']) {
-                $this->new_or_used = ( ($arr['issue mileage']>=$base_warranty[$i]['miles']) ? "USED" : "NEW");
-                $this->new_or_used = ( (($this->suffix1*12) >= $base_warranty[$i]['term'] ) ? "USED" : "NEW");
+                $this->new_or_used = ( ($arr['issue mileage']>=$base_warranty[$i]['miles']) || (($this->suffix1*12) >= $base_warranty[$i]['term'] ) ? "USED" : "NEW");
  
                 //check if base mileage warranty + coverage is below original warranty
                 $warranty_mileage = $arr['miles'];
@@ -374,8 +373,8 @@ for ($i=0; $i<sizeof($coverage_array); $i++) {
         break;
     }
 
-        echo $array1['make'] . "  " . $array1['model year'] . "  " . $array1['issue mileage'] . "  ";
-        echo $ret[0] . "      "; 
+        echo $array1['make'] . "\t" . $array1['model year'] . "\t" . $array1['issue mileage'] . "\t";
+        echo $ret[0] . "      \t"; 
         echo "\"". $array1['testing coverage']. "\"" . "\t";
         echo "suffix1:";
         printf("%02d", $ret[1]);
