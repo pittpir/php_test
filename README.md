@@ -141,7 +141,7 @@ BMW  2010  45000  USED      "100 Months/120,000 Miles"  suffix1:08  suffix2:C  R
 BMW  2010  45000  USED      "120 Months/120,000 Miles"  suffix1:08  suffix2:C  RESULTS: FAILURE   Mileage greater than 153000 before contract ends   Term greater than 147 months 
 ```
 
-#Unit Testing
+# Unit Testing
 
 I wrote my own php Unit Testing program (meaing I did not use the phpunit library).  This program will call the main test.php with the given arguements based off testing the various arrays such as issue_miles, years, and base_warranty.  The idea is to check the boundaries of the properties of the array (aka object) such as min-1, min, min+1.  To run the program do the following...
 
