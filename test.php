@@ -131,7 +131,11 @@ class Validate
     private $result;
 
     //constructor 
-    public function Validate() {
+    public function Validate($base_warranty, $years, $issue_mileage, $classes) {
+        $this->base_warranty = $base_warranty;
+        $this->years = $years;
+        $this->issue_mileage = $issue_mileage;
+        $this->classes = $classes;
         $this->failure = array();
         $this->coverage1 = array();
         $this->retArray = array();
@@ -152,7 +156,7 @@ class Validate
     }
 
     //compile the results of the contract
-    public function booksOfContract(array $arr, array $base_warranty, array $years, array $issue_mileage, array $classes) : array {
+    public function booksOfContract(array $arr) : array {
         
         //issue mileage above what any contract would cover.  Return an empty array to indicate no contracts available.
         if ( ($arr['issue mileage'] + 3000) > 153000)
@@ -161,9 +165,9 @@ class Validate
         }
     
         //get suffix1 and total months on the car.
-        for ($i=0; $i<sizeof($years); $i++) {
-            if ($arr['model year'] == $years[$i]['modelyear']) {
-                $this->suffix1 = $years[$i]['suffix1'];
+        for ($i=0; $i<sizeof($this->years); $i++) {
+            if ($arr['model year'] == $this->years[$i]['modelyear']) {
+                $this->suffix1 = $this->years[$i]['suffix1'];
             }
         }
 
@@ -172,18 +176,18 @@ class Validate
             return $this->retArray;
         }
 
-        for ($i=0; $i<sizeof($base_warranty); $i++) {
+        for ($i=0; $i<sizeof($this->base_warranty); $i++) {
             
             //check if base term warranty + term coverage is below original warranty
             $warranty_term = $arr['terms'];
             
             //check for new or used
-            if ($base_warranty[$i]['make'] == $arr['make']) {
-                $this->new_or_used = ( ($arr['issue mileage']>=$base_warranty[$i]['miles']) || (($this->suffix1*12) >= $base_warranty[$i]['term'] ) ? "USED" : "NEW");
+            if ($this->base_warranty[$i]['make'] == $arr['make']) {
+                $this->new_or_used = ( ($arr['issue mileage']>=$this->base_warranty[$i]['miles']) || (($this->suffix1*12) >= $this->base_warranty[$i]['term'] ) ? "USED" : "NEW");
  
                 //check if base mileage warranty + coverage is below original warranty
                 $warranty_mileage = $arr['miles'];
-                if ( (($warranty_mileage + $arr['issue mileage']) < $base_warranty[$i]['miles']) && ($this->new_or_used == "NEW")) {
+                if ( (($warranty_mileage + $arr['issue mileage']) < $this->base_warranty[$i]['miles']) && ($this->new_or_used == "NEW")) {
                     array_push($this->failure, "Miles expires before base warranty");
                 }
 
@@ -193,7 +197,7 @@ class Validate
                 }
 
                 //check if term expires before the base warranty
-                if  ( ($warranty_term + ($this->suffix1*12) < $base_warranty[$i]['term'] ) && ($this->new_or_used == "NEW"))  {
+                if  ( ($warranty_term + ($this->suffix1*12) < $this->base_warranty[$i]['term'] ) && ($this->new_or_used == "NEW"))  {
                    array_push($this->failure, "Term expires before base warranty");
                 }
 
@@ -205,9 +209,9 @@ class Validate
         }
 
         //find suffix 2 code value  
-        for ($i=0; $i<sizeof($issue_mileage); $i++) {        
-            if ( ($arr['issue mileage'] >= $issue_mileage[$i]['min']) && ($arr['issue mileage'] <= $issue_mileage[$i]['max']) ) {
-                $this->suffix2 = $issue_mileage[$i]['suffix2'];
+        for ($i=0; $i<sizeof($this->issue_mileage); $i++) {        
+            if ( ($arr['issue mileage'] >= $this->issue_mileage[$i]['min']) && ($arr['issue mileage'] <= $this->issue_mileage[$i]['max']) ) {
+                $this->suffix2 = $this->issue_mileage[$i]['suffix2'];
                 break;
             }
 
@@ -353,7 +357,7 @@ if (!file_exists($filename) || !(filesize($filename) > 0)) {
 }
 
 //create an instance of the class
-$validateCar = new Validate();  
+$validateCar = new Validate($base_warranty, $years, $issue_mileage, $classes);  
 
 //call the getter function to populate the coverage array from the API
 //make sure the API is running using the following command...
@@ -366,7 +370,7 @@ for ($i=0; $i<sizeof($coverage_array); $i++) {
     $array1['testing coverage'] = $coverage_array[$i]['name'];
     $array1['terms'] = $coverage_array[$i]['terms'];
     $array1['miles'] = $coverage_array[$i]['miles'];
-    $ret = $validateCar->booksOfContract($array1, $base_warranty, $years, $issue_mileage, $classes);
+    $ret = $validateCar->booksOfContract($array1);
     
     if (sizeof($ret) == 0) {
         echo "No valid contracts available! \n";
