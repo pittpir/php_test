@@ -207,7 +207,7 @@ class Validate
 
         //find suffix 2 code value  
         for ($i=0; $i<sizeof($issue_mileage); $i++) {        
-            if ( ($arr['issue mileage'] > $issue_mileage[$i]['min']) && ($arr['issue mileage'] < $issue_mileage[$i]['max']) ) {
+            if ( ($arr['issue mileage'] >= $issue_mileage[$i]['min']) && ($arr['issue mileage'] <= $issue_mileage[$i]['max']) ) {
                 $this->suffix2 = $issue_mileage[$i]['suffix2'];
                 break;
             }
